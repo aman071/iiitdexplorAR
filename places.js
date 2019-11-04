@@ -1,4 +1,5 @@
 window.onload = () => {
+    setTimeout(function(){ document.getElementById('splash').style.display= "none";},2000)
     let method = 'dynamic';
 
     // if you want to statically add places, de-comment following line
@@ -7,6 +8,7 @@ window.onload = () => {
     if (method === 'static') {
         // setTimeout is a temporary fix
         setTimeout(() => {
+            alert("qqqqqqqq")
             let places = staticLoadPlaces();
             renderPlaces(places);
         }, 3000);
@@ -169,6 +171,8 @@ function staticLoadPlaces() {
 // };
 
 function renderPlaces(places) {
+    console.log("njnsjd");
+    alert("pkpop");
     let scene = document.querySelector('a-scene');
     var path='./Banners/1x'
     var markers=['./Banners/1x/Library.png', './Banners/1x/Library.png']
@@ -216,37 +220,3 @@ function renderPlaces(places) {
     });
 }
 
-window.onload = () => {
-    let method = 'dynamic';
-
-    // if you want to statically add places, de-comment following line
-    method = 'static';
-
-    if (method === 'static') {
-        // setTimeout is a temporary fix
-        setTimeout(() => {
-            let places = staticLoadPlaces();
-            renderPlaces(places);
-        }, 3000);
-    }
-
-    if (method !== 'static') {
-
-        // first get current user location
-        return navigator.geolocation.getCurrentPosition(function (position) {
-
-            // than use it to load from remote APIs some places nearby
-            dynamicLoadPlaces(position.coords)
-                .then((places) => {
-                    renderPlaces(places);
-                })
-        },
-            (err) => console.error('Error in retrieving position', err),
-            {
-                enableHighAccuracy: true,
-                maximumAge: 0,
-                timeout: 27000,
-            }
-        );
-    }
-};
