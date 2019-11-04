@@ -5,16 +5,14 @@ body {
 	background-image:url("./splash.png");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	width: 100vw;
-	height: 100vh;
 }
-#video{
+/*#video{
 	position: fixed;
 	right: 0;
 	bottom: 0;
 	min-width: 100vw;
 	min-height: 100vh;
-}
+}*/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */

@@ -1,4 +1,4 @@
 window.onload=function(){
 
-    setTimeout(function(){ document.getElementById('splash').style.display= "none";},200000)
+    setTimeout(function(){ document.getElementById('splash').style.display= "none";},2000)
 }
