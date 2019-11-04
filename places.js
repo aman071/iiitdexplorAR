@@ -8,7 +8,6 @@ window.onload = () => {
     if (method === 'static') {
         // setTimeout is a temporary fix
         setTimeout(() => {
-            alert("qqqqqqqq")
             let places = staticLoadPlaces();
             renderPlaces(places);
         }, 3000);
@@ -171,8 +170,6 @@ function staticLoadPlaces() {
 // };
 
 function renderPlaces(places) {
-    console.log("njnsjd");
-    alert("pkpop");
     let scene = document.querySelector('a-scene');
     var path='./Banners/1x'
     var markers=['./Banners/1x/Library.png', './Banners/1x/Library.png']
@@ -210,7 +207,7 @@ function renderPlaces(places) {
 
                 setTimeout(() => {
                     container.parentElement.removeChild(container);
-                }, 1500);
+                }, 150000);
             }
         };
 
