@@ -1,4 +1,5 @@
 window.onload = () => {
+    alert("finished loading!")
     setTimeout(function(){ document.getElementById('splash').style.display= "none";},2000)
     let method = 'dynamic';
 
@@ -231,7 +232,7 @@ function renderPlaces(places) {
 
         navigator.geolocation.getCurrentPosition(showPosition);
         showPosition(position){
-            document.getElementById("info").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+            document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
             alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
         };
 
