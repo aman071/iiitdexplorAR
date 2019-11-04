@@ -172,8 +172,8 @@ function staticLoadPlaces() {
 
 var abtPlaceModal = document.getElementById("abtPlaceModal");
 var abtBtn = document.getElementById("helpBtn");
-var abtSpan = document.getElementsByClassName("close")[0];
-var abtCloseButton = document.getElementsByClassName("close")[1];
+var abtSpan = document.getElementsByClassName("abtClose")[0];
+var abtCloseButton = document.getElementsByClassName("abtClose")[1];
 // When the user clicks the button, open the modal 
 // for that check out event listenter added below 
 
