@@ -169,7 +169,7 @@ function staticLoadPlaces() {
 //         })
 // };
 
-
+// --------------------------------------------------------- about a place modal box
 var abtPlaceModal = document.getElementById("abtPlaceModal");
 var abtBtn = document.getElementById("helpBtn");
 var abtSpan = document.getElementsByClassName("abtClose")[0];
@@ -193,7 +193,28 @@ window.onclick = function(event) {
   }
 }
 
+// -------------------------------------------- printing geoloction
+var options = {
+  enableHighAccuracy: true,
+  maximumAge: 20000
+};
 
+function success(pos) {
+  var crd = pos.coords;
+
+  alert("kcdjaoj")
+  console.log('Your current position is:');
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude: ${crd.longitude}`);
+  console.log(`More or less ${crd.accuracy} meters.`);
+}
+
+function handle_error(err) {
+  if (err.code == 1) {
+    // user said no!
+  }
+}
+// --------------------------------------------
 function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
     var path='./Banners/1x'
@@ -202,6 +223,17 @@ function renderPlaces(places) {
     places.forEach((place) => {
         const latitude = place.location.lat;
         const longitude = place.location.lng;
+
+        // var current=navigator.geolocation.getCurrentPosition(success, handle_error, options);
+        // console.log(current);
+        // var current_lat=current.coords.latitude
+        // var current_lon=current.coords.longitude
+
+        navigator.geolocation.getCurrentPosition(showPosition);
+        showPosition(position){
+            document.getElementById("info").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+            alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
+        };
 
         // add place icon
         const icon = document.createElement('a-image');
