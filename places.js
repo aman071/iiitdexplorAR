@@ -189,29 +189,31 @@ function renderPlaces(places) {
 
         icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
 
-        const clickListener = function (ev) {
-            ev.stopPropagation();
-            ev.preventDefault();
+        // const clickListener = function (ev) {
+        //     ev.stopPropagation();
+        //     ev.preventDefault();
 
-            const name = ev.target.getAttribute('name');
+        //     const name = ev.target.getAttribute('name');
 
-            const el = ev.detail.intersection && ev.detail.intersection.object.el;
+        //     const el = ev.detail.intersection && ev.detail.intersection.object.el;
 
-            if (el && el === ev.target) {
-                const label = document.createElement('span');
-                const container = document.createElement('div');
-                container.setAttribute('id', 'place-label');
-                label.innerText = name;
-                container.appendChild(label);
-                document.body.appendChild(container);
+        //     if (el && el === ev.target) {
+        //         const label = document.createElement('span');
+        //         const container = document.createElement('div');
+        //         container.setAttribute('id', 'place-label');
+        //         label.innerText = name;
+        //         container.appendChild(label);
+        //         document.body.appendChild(container);
 
-                setTimeout(() => {
-                    container.parentElement.removeChild(container);
-                }, 150000);
-            }
-        };
+        //         setTimeout(() => {
+        //             container.parentElement.removeChild(container);
+        //         }, 150000);
+        //     }
+        // };
 
-        icon.addEventListener('click', clickListener);
+        icon.addEventListener('click', function(){
+            alert("you clicked me");
+        });
 
         scene.appendChild(icon);
     });
