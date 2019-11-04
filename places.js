@@ -130,9 +130,9 @@ function staticLoadPlaces() {
             src: './Banners/1x/SportsBlock.png'
         }
 
-// Old Boys Hostel	28.547387, 77.273946
-// New Boys Hostel	28.547902, 77.274062
-// Girls Hostel	28.546988, 77.273763
+// Old Boys Hostel  28.547387, 77.273946
+// New Boys Hostel  28.547902, 77.274062
+// Girls Hostel 28.546988, 77.273763
     ];
 }
 
