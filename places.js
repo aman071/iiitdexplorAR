@@ -169,6 +169,31 @@ function staticLoadPlaces() {
 //         })
 // };
 
+
+var abtPlaceModal = document.getElementById("abtPlaceModal");
+var abtBtn = document.getElementById("helpBtn");
+var abtSpan = document.getElementsByClassName("close")[0];
+var abtCloseButton = document.getElementsByClassName("close")[1];
+// When the user clicks the button, open the modal 
+// for that check out event listenter added below 
+
+// When the user clicks on <span> (x), close the modal
+abtSpan.onclick = function() {
+  abtPlaceModal.style.display = "none";
+}
+
+abtCloseButton.onclick = function() {
+  abtPlaceModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == abtPlaceModal) {
+    abtPlaceModal.style.display = "none";
+  }
+}
+
+
 function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
     var path='./Banners/1x'
@@ -212,7 +237,8 @@ function renderPlaces(places) {
         // };
 
         icon.addEventListener('click', function(){
-            alert("you clicked me");
+            alert("you clicked" + place.name);
+            abtPlaceModal.style.display = "block";
         });
 
         scene.appendChild(icon);
