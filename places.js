@@ -231,7 +231,7 @@ function renderPlaces(places) {
         // var current_lon=current.coords.longitude
 
         navigator.geolocation.getCurrentPosition(showPosition);
-        showPosition(position){
+        function showPosition(position){
             document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
             alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
         };
