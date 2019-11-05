@@ -265,10 +265,11 @@ function renderPlaces(places) {
 
         icon.addEventListener('click', function(){
             alert("you clicked" + place.name);
-            navigator.geolocation.getCurrentPosition(showPosition);
+            document.getElementById("placeName").innerHTML=place.name;
+            var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
             function showPosition(position){
                 document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
-                alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
+                // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
             };
             abtPlaceModal.style.display = "block";
         });
