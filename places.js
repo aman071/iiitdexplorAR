@@ -195,26 +195,26 @@ window.onclick = function(event) {
 }
 
 // -------------------------------------------- printing geoloction
-var options = {
-  enableHighAccuracy: true,
-  maximumAge: 20000
-};
+// var options = {
+//   enableHighAccuracy: true,
+//   maximumAge: 20000
+// };
 
-function success(pos) {
-  var crd = pos.coords;
+// function success(pos) {
+//   var crd = pos.coords;
 
-  alert("kcdjaoj")
-  console.log('Your current position is:');
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude: ${crd.longitude}`);
-  console.log(`More or less ${crd.accuracy} meters.`);
-}
+//   alert("kcdjaoj")
+//   console.log('Your current position is:');
+//   console.log(`Latitude : ${crd.latitude}`);
+//   console.log(`Longitude: ${crd.longitude}`);
+//   console.log(`More or less ${crd.accuracy} meters.`);
+// }
 
-function handle_error(err) {
-  if (err.code == 1) {
-    // user said no!
-  }
-}
+// function handle_error(err) {
+//   if (err.code == 1) {
+//     // user said no!
+//   }
+// }
 // --------------------------------------------
 function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
@@ -229,12 +229,6 @@ function renderPlaces(places) {
         // console.log(current);
         // var current_lat=current.coords.latitude
         // var current_lon=current.coords.longitude
-
-        navigator.geolocation.getCurrentPosition(showPosition);
-        function showPosition(position){
-            document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
-            alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
-        };
 
         // add place icon
         const icon = document.createElement('a-image');
@@ -271,6 +265,11 @@ function renderPlaces(places) {
 
         icon.addEventListener('click', function(){
             alert("you clicked" + place.name);
+            navigator.geolocation.getCurrentPosition(showPosition);
+            function showPosition(position){
+                document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+                alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
+            };
             abtPlaceModal.style.display = "block";
         });
 
