@@ -1,6 +1,6 @@
 window.onload = () => {
-    alert("finished loading- IIITD ExplorAR2")
-    setTimeout(function(){ document.getElementById('splash').style.display= "none"},2000);
+    alert("finished loading- IIITD ExplorAR3")
+    setTimeout(function(){ document.getElementById('splash').style.display= "none";},2000);
     var method = 'dynamic';
 
     // if you want to statically add places, de-comment following line
