@@ -263,18 +263,18 @@ function renderPlaces(places) {
         //     }
         // };
 
-        icon.addEventListener('click', function(){
-            alert("you clicked" + place.name);
-            document.getElementById("placeName").innerHTML=place.name;
-            var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
-            function showPosition(position){
-                document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
-                document.getElementById("dist").innerHTML = "Distance: " + (distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng)%100000)*1000 + "meters away from you" ;
-                document.getElementById("dist2").innerHTML = place.name + "is" + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng)*1000 + "meters away from you" ; 
-                // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
-            };
-            abtPlaceModal.style.display = "block";
-        });
+//         icon.addEventListener('click', function(){
+//             alert("you clicked" + place.name);
+//             document.getElementById("placeName").innerHTML=place.name;
+//             var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
+//             function showPosition(position){
+//                 document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+//                 document.getElementById("dist").innerHTML = "Distance: " + (distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng)%100000)*1000 + "meters away from you" ;
+//                 document.getElementById("dist2").innerHTML = place.name + "is" + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng)*1000 + "meters away from you" ; 
+//                 // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
+//             };
+//             abtPlaceModal.style.display = "block";
+//         });
 
         scene.appendChild(icon);
     });
