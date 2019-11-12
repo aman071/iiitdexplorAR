@@ -1,5 +1,5 @@
 window.onload = () => {
-    alert("finished loading!")
+    alert("finished loading- IIITD ExplorAR")
     setTimeout(function(){ document.getElementById('splash').style.display= "none";},2000)
     let method = 'dynamic';
 
@@ -265,8 +265,8 @@ function renderPlaces(places) {
 
         icon.addEventListener('click', function(){
             alert("you clicked" + place.name);
-            document.getElementById("placeName").innerHTML=place.name;
-            var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
+//             document.getElementById("placeName").innerHTML=place.name;
+//             var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
             function showPosition(position){
                 document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
                 // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
