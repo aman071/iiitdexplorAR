@@ -1,5 +1,5 @@
 window.onload = () => {
-    alert("finished loading- IIITD ExplorAR_4")
+    alert("finished loading- IIITD ExplorAR_5")
     setTimeout(function(){ document.getElementById('splash').style.display= "none";},2000);
     let method = 'dynamic';
 
@@ -276,7 +276,7 @@ function renderPlaces(places) {
 //             abtPlaceModal.style.display = "block";
 //         });
 
-        scene.appendChild(icon);
+//         scene.appendChild(icon);
     });
 }
 
