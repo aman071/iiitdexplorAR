@@ -2,7 +2,7 @@ body {
   font-family: Helevantica;
 }
 #splash {
-	background-image:url("./splash.png");
+	background-image:url("Banners/splash.png");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
@@ -33,29 +33,28 @@ body {
 /* Modal Content */
 .modal-content {
   position: fixed;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px; 
   bottom: 0;
   background-color: #fefefe;
   width: 100%;
   -webkit-animation-name: slideIn;
   -webkit-animation-duration: 0.4s;
   animation-name: slideIn;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
 }
 
 /* The Close Button */
-.close {
-  color: white;
+#close {
+  padding-top: 15px;
+  padding-right: 10px;
+  color: green;
   float: right;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 .modal-header {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
@@ -92,9 +91,17 @@ body {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: white;
-  color: white;
+  background-color: none;
+  color: orange;
   text-align: center;
+  display: inline-block;
+}
+.navBtn{
+  display:inline-block;    
+  width:25%;
+  padding-bottom: 10px;
+  text-align:center;
+  /*padding: 10px; padding-bottom:2px;*/
 }
 button{
   /*background-color: green; */
@@ -107,4 +114,35 @@ button{
   display: inline-block;
   font-size: 15px;
   border-radius: 10px;
+}
+.header{
+  overflow: hidden;
+  position:fixed;
+  color: orange;
+}
+.dist{
+  color: orange;
+}
+#dist2{
+  text-align: right;
+  background-color: orange;
+  border: orange;
+  border-radius: 5px;
+  bottom: 100px;
+  right:0px;
+  width: 200px;
+  color: white;
+  position: fixed;
+}
+
+#options{
+  height: 225px;
+  /*border: 1px solid lightgrey;*/
+  overflow: scroll;
+}
+
+#option{
+  padding: 20px;
+  /*border-top: 1px solid lightgrey;*/
+  border-bottom: 1px solid lightgrey;
 }

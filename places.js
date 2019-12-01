@@ -1,6 +1,9 @@
 window.onload = () => {
-    alert("finished loading- IIITD ExplorAR_6")
-    setTimeout(function(){ document.getElementById('splash').style.display= "none";},2000);
+    alert("finished loading!")
+    setTimeout(function()
+        { document.getElementById('splash').style.display= "none"; 
+        // modal2.style.display = "block";
+    },2000)
     let method = 'dynamic';
 
     // if you want to statically add places, de-comment following line
@@ -11,7 +14,7 @@ window.onload = () => {
         setTimeout(() => {
             let places = staticLoadPlaces();
             renderPlaces(places);
-        }, 3000);
+        }, 1000);
     }
 
     if (method !== 'static') {
@@ -34,6 +37,23 @@ window.onload = () => {
         );
     }
 };
+
+function distance(lat1, lon1, lat2, lon2, unit) {
+        var radlat1 = Math.PI * lat1/180
+        var radlat2 = Math.PI * lat2/180
+        var radlon1 = Math.PI * lon1/180
+        var radlon2 = Math.PI * lon2/180
+        var theta = lon1-lon2
+        var radtheta = Math.PI * theta/180
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist)
+        dist = dist * 180/Math.PI
+        dist = dist * 60 * 1.1515
+        if (unit=="K") { dist = dist * 1.609344 }
+        if (unit=="N") { dist = dist * 0.8684 }
+        return Math.round(dist*100000)/100
+        // return Math.round(dist*100)/100
+}
 
 function staticLoadPlaces() {
     return [
@@ -185,6 +205,7 @@ abtSpan.onclick = function() {
 
 abtCloseButton.onclick = function() {
   abtPlaceModal.style.display = "none";
+  document.getElementById("modal2").style.display="none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -218,8 +239,7 @@ window.onclick = function(event) {
 // --------------------------------------------
 function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
-    var path='./Banners/1x'
-    var markers=['./Banners/1x/Library.png', './Banners/1x/Library.png']
+    let options = document.querySelector('#options');
 
     places.forEach((place) => {
         const latitude = place.location.lat;
@@ -231,13 +251,16 @@ function renderPlaces(places) {
         // var current_lon=current.coords.longitude
 
         // add place icon
-        const icon = document.createElement('a-image');
+        // const icon = document.createElement('a-image');
+        const icon = document.createElement('a-entity');
+        icon.setAttribute('obj-model',"obj: url(./3d/library_pointer3.obj); mtl: url(./3d/library_pointer3.mtl)")
         icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
         icon.setAttribute('name', place.name);
-        icon.setAttribute('src', place.src);
+        // icon.setAttribute('src', place.src);
 
         // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
         icon.setAttribute('scale', '20, 20');
+        // icon.setAttribute('scale', '5, 5');
 
         icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
 
@@ -263,20 +286,42 @@ function renderPlaces(places) {
         //     }
         // };
 
-//         icon.addEventListener('click', function(){
-//             alert("you clicked" + place.name);
-//             document.getElementById("placeName").innerHTML=place.name;
-//             var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
-//             function showPosition(position){
-//                 document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
-//                 document.getElementById("dist").innerHTML = "Distance: " + (distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng)%100000)*1000 + "meters away from you" ;
-//                 document.getElementById("dist2").innerHTML = place.name + "is" + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng)*1000 + "meters away from you" ; 
-//                 // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
-//             };
-//             abtPlaceModal.style.display = "block";
-//         });
+        icon.addEventListener('click', function(){
+            alert("you clicked" + place.name);
+            document.getElementById("placeName").innerHTML=place.name;
+            var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
+            function showPosition(position){
+                document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+                document.getElementById("dist").innerHTML = "Distance: " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ;
+                document.getElementById("dist2").innerHTML = place.name + " is " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ; 
+                // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
+            };
+            abtPlaceModal.style.display = "block";
+        });
 
         scene.appendChild(icon);
+
+        const option = document.createElement('div');
+        option.setAttribute('id', 'option')
+        option.innerHTML= place.name;
+
+        option.addEventListener('click', function(){
+            alert("you clicked" + place.name);
+            document.getElementById("placeName").innerHTML=place.name;
+            var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
+            function showPosition(position){
+                document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+                document.getElementById("dist").innerHTML = "Distance: " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ;
+                document.getElementById("dist2").innerHTML = place.name + " is " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ; 
+                // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
+            };
+            abtPlaceModal.style.display = "block";
+        });
+
+        options.appendChild(option);
+
+        
     });
 }
+
 

@@ -24,34 +24,57 @@
         embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
 
-        <a-camera gps-camera="minDistance: 20;" rotation-reader>
+        <a-camera gps-camera="minDistance: 20;">
         </a-camera>
     </a-scene>
 
     <!-- Trigger/Open The Modal -->
-    <div class="footer">
-      <div id="dist2">
-        </div> 
-      <button ><i class="material-icons">home</i></button>
-      <button id="helpBtn"><i class="material-icons">help</i></button>
+    <div class="footer"> 
+      <div id="dist2"></div>
+      <div id="helpBtn" class="navBtn"><i class="material-icons" style="font-size: 40px;">help</i></div>
+      <div id="" class="navBtn"><i class="material-icons" style="font-size: 40px;">explore</i></div>
+      <div id="btn2" class="navBtn"><i class="material-icons" style="font-size: 40px;">search</i></div>
     </div>
     <div id="header">
          
     </div>
 
+    <!-- Trigger/Open The Modal -->
+    <!-- The Modal -->
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close2" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <h2>Welcome to ExplorAR</h2>
+        </div>
+        <div class="modal-body">
+          <h1 style="color: grey; font-size: 25px; text-align: center;">Where do you want to go today?</h1>
+          <div id="options" >
+
+            <!-- -------------------------options will be added according to places array in places.js -->
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="close2" id="close">Just Exploring...</button>
+        </div>
+      </div>
+    </div>
+
+
     <!-- The Modal -->
     <div id="helpModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span class="close" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <span class="close" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
           <h2>NavigatAR Guide</h2>
         </div>
         <div class="modal-body">
           <h1 style="color: grey; font-size: 25px; text-align: center;">Pan over the campus buildings</h1>
-          <img src="movement.gif" style="display: block; margin-left: auto; margin-right: auto; width: 100px;">
+          <img src="Banners/movement.gif" style="display: block; margin-left: auto; margin-right: auto; width: 100px;">
         </div>
         <div class="modal-footer">
-          <button class="close">Close</button>
+          <button class="close" id="close">Close</button>
         </div>
       </div>
     </div>
@@ -60,15 +83,16 @@
     <div id="abtPlaceModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span class="abtClose" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <span class="abtClose" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
           <h2 id="placeName">Place A</h2>
         </div>
         <div class="modal-body">
             <div id="latLong"></div>
+            <div id="dist"></div>
           
         </div>
         <div class="modal-footer">
-          <button class="abtClose">Close</button>
+          <button class="abtClose" id="close">Close</button>
         </div>
       </div>
     </div>
