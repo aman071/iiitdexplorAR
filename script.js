@@ -83,7 +83,7 @@ span3.onclick = function() {
 
 closeButton3.onclick = function() {
   modal3.style.display = "none";
-  document.getElementById('exploreAlert').innerHTML="Explore your way!"; 
+  document.getElementById('exploreAlert').innerHTML="Explore, your way!"; 
   // modal2.style.display = "block";
   setTimeout(function()
   { document.getElementById('exploreAlert').innerHTML= ""; 
@@ -100,11 +100,22 @@ window.onclick = function(event) {
 
 
 
-var slideIndex = 1;
-showSlides(slideIndex);
+var slideIndex = 0;
+plusSlides(1);
 
 function plusSlides(n) {
+  var slides = document.getElementsByClassName("mySlides");
   showSlides(slideIndex += n);
+  if(slideIndex==3){
+    document.getElementById("next").style.display="none";
+  }
+  if(slideIndex==1){
+    document.getElementById("prev").style.display="none";
+  }
+  if (slideIndex==2) {
+    document.getElementById("next").style.display="block";
+    document.getElementById("prev").style.display="block";
+  }
 }
 
 function currentSlide(n) {

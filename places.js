@@ -91,8 +91,8 @@ function staticLoadPlaces() {
                 lng: 77.272383, // add here longitude if using static data
             },
             src: './Banners/1x/Library.png',
-            obj: '',
-            mtl: ''
+            obj: 'library.obj',
+            mtl: 'library.mtl'
 
         },
         {
@@ -102,8 +102,8 @@ function staticLoadPlaces() {
                 lng: 77.271691, // add here longitude if using static data
             },
             src: './Banners/1x/R&D.png',
-            obj: '',
-            mtl: ''
+            obj: 'RnD.obj',
+            mtl: 'RnD.mtl'
 
         },
         {
@@ -113,8 +113,8 @@ function staticLoadPlaces() {
                 lng: 77.272213, // add here longitude if using static data
             },
             src: './Banners/1x/OldAcad.png',
-            obj: '',
-            mtl: ''
+            obj: 'oldacad.obj',
+            mtl: 'oldacad.mtl'
 
         },
         {
@@ -124,8 +124,8 @@ function staticLoadPlaces() {
                 lng: 77.273007, // add here longitude if using static data
             },
             src: './Banners/1x/StudentCentre.png',
-            obj: '',
-            mtl: ''
+            obj: 'studentcenter.obj',
+            mtl: 'studentcenter.mtl'
 
         },
         {
@@ -135,8 +135,8 @@ function staticLoadPlaces() {
                 lng: 77.272877, // add here longitude if using static data
             },
             src: './Banners/1x/LectureHC.png',
-            obj: '',
-            mtl: ''
+            obj: 'lhc.obj',
+            mtl: 'lhc.mtl'
 
         },
         {
@@ -146,8 +146,8 @@ function staticLoadPlaces() {
                 lng: 77.273946, // add here longitude if using static data
             },
             src: './Banners/1x/oldBoysHostel.png',
-            obj: '',
-            mtl: ''
+            obj: 'oldboyshostel.obj',
+            mtl: 'oldboyshostel.mtl'
 
         },
         {
@@ -157,8 +157,8 @@ function staticLoadPlaces() {
                 lng: 77.274062, // add here longitude if using static data
             },
             src: './Banners/1x/NewBoysHostel.png',
-            obj: '',
-            mtl: ''
+            obj: 'newhostelh1.obj',
+            mtl: 'newhostelh1.mtl'
 
         },
         {
@@ -168,8 +168,8 @@ function staticLoadPlaces() {
                 lng: 77.274062, // add here longitude if using static data
             },
             src: './Banners/1x/NewBoysHostel.png',
-            obj: '',
-            mtl: ''
+            obj: 'newhostelh2.obj',
+            mtl: 'newhostelh2.mtl'
 
         },
         {
@@ -179,8 +179,8 @@ function staticLoadPlaces() {
                 lng: 77.273763, // add here longitude if using static data
             },
             src: './Banners/1x/GirlsHostel.png',
-            obj: '',
-            mtl: ''
+            obj: 'girlshostel.obj',
+            mtl: 'girlshostel.mtl'
         },
         {
             name: "Sports Complex",
@@ -189,15 +189,16 @@ function staticLoadPlaces() {
                 lng: 77.272436 // add here longitude if using static data
             },
             src: './Banners/1x/SportsBlock.png',
-            obj: '',
-            mtl: ''
+            obj: 'sportscomplex.obj',
+            mtl: 'sportscomplex.mtl'
         }
 
 // Old Boys Hostel  28.547387, 77.273946
 // New Boys Hostel  28.547902, 77.274062
 // Girls Hostel 28.546988, 77.273763
     ];
-}
+};
+
 
 // getting places from REST APIs
 // function dynamicLoadPlaces(position) {
@@ -295,9 +296,9 @@ function renderPlaces(places) {
         // const icon = document.createElement('a-image');
         const icon = document.createElement('a-entity');
         // icon.setAttribute('rotation',"0 0 0");
-
-        icon.setAttribute('obj-model',"obj: url(./3d/".concat(place.obj).concat( "); mtl: url( ./3d/" ).concat( place.mtl ).concat( ".mtl)" ));
-        icon.setAttribute('obj-model',"obj: url(./3d/lhc_pointer.obj); mtl: url(./3d/lhc_pointer.mtl)");
+        var ap="obj: url(./3d/".concat(place.obj).concat("); mtl: url(./3d/").concat(place.mtl).concat(")");
+        // alert(ap);
+        icon.setAttribute('obj-model',ap);
         icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
         icon.setAttribute('name', place.name);
         // icon.setAttribute('src', place.src);
