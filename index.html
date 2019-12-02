@@ -31,12 +31,13 @@
     <!-- Trigger/Open The Modal -->
     <div class="footer"> 
       <div id="dist2"></div>
-      <div id="helpBtn" class="navBtn"><i class="material-icons" style="font-size: 40px;">help</i></div>
-      <div id="" class="navBtn"><i class="material-icons" style="font-size: 40px;">explore</i></div>
-      <div id="btn2" class="navBtn"><i class="material-icons" style="font-size: 40px;">search</i></div>
+      <div id="exploreAlert"></div>
+      <div id="helpBtn" class="navBtn"><i class="material-icons" id="search" onclick="changeToFilled(this);" style="font-size: 40px;">help</i></div>
+      <div id="" class="navBtn" onclick="turnOffDist2Div()"><i class="material-icons" id="explore" onclick="changeToFilled(this);" style="font-size: 40px;">explore</i></div>
+      <div id="btn2" class="navBtn"><i id="search" class="material-icons" onclick="changeToFilled(this);" style="font-size: 40px;">search</i></div>
     </div>
-    <div id="header">
-         
+    <div id="alert" style="display: none;">
+
     </div>
 
     <!-- Trigger/Open The Modal -->
@@ -44,7 +45,7 @@
     <div id="modal2" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span class="close2" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <span class="close2 closeIcon" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
           <h2>Welcome to ExplorAR</h2>
         </div>
         <div class="modal-body">
@@ -66,14 +67,26 @@
     <div id="helpModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span class="close" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <span class="close closeIcon" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
           <h2>NavigatAR Guide</h2>
         </div>
         <div class="modal-body">
-          <h1 style="color: grey; font-size: 25px; text-align: center;">Pan over the campus buildings</h1>
+          <h1 style="color: grey; font-size: 25px; text-align: center;"></h1>
+          <p>Our app ExplorAR will help you reach any IIITD building!
+          Make sure you follow the following steps in order to use ExplorAR:
+          1) Ensure that you have an internet connection.
+          2) Ensure that your GPS is turned on.
+          3) Please allow access to your location when prompted.
+          4) When your camera opens up, you are ready to use ExplorAR! The default screen is Explore, where you can see pointers for all the buildings.
+          5) You can search for a specific building by clicking on the Search icon (magnifier), choose which building you want to go to from the menu. Once you choose your destination, ExplorAR tells you the distance(in metres) between you and your destination. Note: Distance shown may not be 100% accurate because of GPS instability.
+
+          Here is a sample demonstration of how to use ExplorAR.
+          </p>
+<Insert GIF>
           <img src="Banners/movement.gif" style="display: block; margin-left: auto; margin-right: auto; width: 100px;">
         </div>
         <div class="modal-footer">
+          <button id="onbBtn">Onboard again.</button>
           <button class="close" id="close">Close</button>
         </div>
       </div>
@@ -83,7 +96,7 @@
     <div id="abtPlaceModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span class="abtClose" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <span class="abtClose closeIcon" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
           <h2 id="placeName">Place A</h2>
         </div>
         <div class="modal-body">
@@ -92,10 +105,67 @@
           
         </div>
         <div class="modal-footer">
+          Distance might not be accurate.
           <button class="abtClose" id="close">Close</button>
         </div>
       </div>
     </div>
+
+
+
+    <!-- onboarding Modal -->
+    <div id="onbModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close3 closeIcon" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <h2>NavigatAR Guide</h2>
+        </div>
+        <div class="modal-body">
+          
+          <div class="slideshow-container">
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 4</div>
+              <div class="onb onb1" style="width: 100%; height: 400px; vertical-align: middle; text-align: center;"><p>New to the campus?<br>We will guide you!</p></div>
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 4</div>
+              <div class="onb onb1" style="width: 100%; height: 400px; vertical-align: middle; text-align: center;"><p> Explore the campus</p></div>
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 4</div>
+              <div class="onb onb1" style="width: 100%; height: 400px; vertical-align: middle; text-align: center;"><p>Works best in potrait mode. Pan your device.</p></div>
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">4 / 4</div>
+              <div class="onb onb1" style="width: 100%; height: 400px; vertical-align: middle; text-align: center;">keep an eye</div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          </div>
+          <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span> 
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button class="close3" id="close">Skip</button>
+          <button>Next</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

@@ -4,6 +4,18 @@ window.onload = () => {
         { document.getElementById('splash').style.display= "none"; 
         // modal2.style.display = "block";
     },2000)
+    
+    document.getElementById("alert").style.backgroundColor="#F4DB05";
+    document.getElementById("alert").style.display="block";
+    document.getElementById("alert").innerHTML="Make sure your GPS is turned on!";
+    setTimeout(function()
+    { 
+        document.getElementById("alert").innerHTML="";
+        document.getElementById("alert").style.display="none";
+        document.getElementById("onbModal").style.display = "block";
+
+    },3000);
+    
     let method = 'dynamic';
 
     // if you want to statically add places, de-comment following line
@@ -73,39 +85,47 @@ function staticLoadPlaces() {
 //             }
 //         },
         {
-            name: "Library Building",
+            name: "Library Block",
             location: {
                 lat: 28.543991,  // add here latitude if using static data
                 lng: 77.272383, // add here longitude if using static data
             },
-            src: './Banners/1x/Library.png'
+            src: './Banners/1x/Library.png',
+            obj: '',
+            mtl: ''
 
         },
         {
-            name: "New Academic Building",
+            name: "Research & Development Block",
             location: {
                 lat: 28.544113,  // add here latitude if using static data
                 lng: 77.271691, // add here longitude if using static data
             },
-            src: './Banners/1x/R&D.png'
+            src: './Banners/1x/R&D.png',
+            obj: '',
+            mtl: ''
 
         },
         {
-            name: "Old Academic Building",
+            name: "Academic Block",
             location: {
                 lat: 28.544591,  // add here latitude if using static data
                 lng: 77.272213, // add here longitude if using static data
             },
-            src: './Banners/1x/OldAcad.png'
+            src: './Banners/1x/OldAcad.png',
+            obj: '',
+            mtl: ''
 
         },
         {
-            name: "Students Center",
+            name: "Students Center Block",
             location: {
                 lat: 28.546038, // add here latitude if using static data
                 lng: 77.273007, // add here longitude if using static data
             },
-            src: './Banners/1x/StudentCentre.png'
+            src: './Banners/1x/StudentCentre.png',
+            obj: '',
+            mtl: ''
 
         },
         {
@@ -114,7 +134,9 @@ function staticLoadPlaces() {
                 lat: 28.545361,  // add here latitude if using static data
                 lng: 77.272877, // add here longitude if using static data
             },
-            src: './Banners/1x/LectureHC.png'
+            src: './Banners/1x/LectureHC.png',
+            obj: '',
+            mtl: ''
 
         },
         {
@@ -123,16 +145,31 @@ function staticLoadPlaces() {
                 lat: 28.547387,  // add here latitude if using static data
                 lng: 77.273946, // add here longitude if using static data
             },
-            src: './Banners/1x/oldBoysHostel.png'
+            src: './Banners/1x/oldBoysHostel.png',
+            obj: '',
+            mtl: ''
 
         },
         {
-            name: "New Boys Hostel",
+            name: "New Boys Hostel H1",
             location: {
                 lat: 28.547902,  // add here latitude if using static data
                 lng: 77.274062, // add here longitude if using static data
             },
-            src: './Banners/1x/NewBoysHostel.png'
+            src: './Banners/1x/NewBoysHostel.png',
+            obj: '',
+            mtl: ''
+
+        },
+        {
+            name: "New Boys Hostel H2",
+            location: {
+                lat: 28.547902,  // add here latitude if using static data
+                lng: 77.274062, // add here longitude if using static data
+            },
+            src: './Banners/1x/NewBoysHostel.png',
+            obj: '',
+            mtl: ''
 
         },
         {
@@ -141,7 +178,9 @@ function staticLoadPlaces() {
                 lat: 28.546988,  // add here latitude if using static data
                 lng: 77.273763, // add here longitude if using static data
             },
-            src: './Banners/1x/GirlsHostel.png'
+            src: './Banners/1x/GirlsHostel.png',
+            obj: '',
+            mtl: ''
         },
         {
             name: "Sports Complex",
@@ -149,7 +188,9 @@ function staticLoadPlaces() {
                 lat: 28.547073,   // add here latitude if using static data
                 lng: 77.272436 // add here longitude if using static data
             },
-            src: './Banners/1x/SportsBlock.png'
+            src: './Banners/1x/SportsBlock.png',
+            obj: '',
+            mtl: ''
         }
 
 // Old Boys Hostel  28.547387, 77.273946
@@ -253,13 +294,16 @@ function renderPlaces(places) {
         // add place icon
         // const icon = document.createElement('a-image');
         const icon = document.createElement('a-entity');
-        icon.setAttribute('obj-model',"obj: url(./3d/library_pointer3.obj); mtl: url(./3d/library_pointer3.mtl)")
+        // icon.setAttribute('rotation',"0 0 0");
+
+        icon.setAttribute('obj-model',"obj: url(./3d/".concat(place.obj).concat( "); mtl: url( ./3d/" ).concat( place.mtl ).concat( ".mtl)" ));
+        icon.setAttribute('obj-model',"obj: url(./3d/lhc_pointer.obj); mtl: url(./3d/lhc_pointer.mtl)");
         icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
         icon.setAttribute('name', place.name);
         // icon.setAttribute('src', place.src);
 
         // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-        icon.setAttribute('scale', '20, 20');
+        icon.setAttribute('scale', '5, 5');
         // icon.setAttribute('scale', '5, 5');
 
         icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
@@ -310,12 +354,14 @@ function renderPlaces(places) {
             document.getElementById("placeName").innerHTML=place.name;
             var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
             function showPosition(position){
+
                 document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
                 document.getElementById("dist").innerHTML = "Distance: " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ;
                 document.getElementById("dist2").innerHTML = place.name + " is " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ; 
                 // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
             };
             abtPlaceModal.style.display = "block";
+            
         });
 
         options.appendChild(option);
@@ -323,5 +369,49 @@ function renderPlaces(places) {
         
     });
 }
+function display_c(){
+var refresh=1000; // Refresh rate in milli seconds
+mytime=setTimeout('display_ct()',refresh)
+}
 
+function display_ct() {
+var x = new Date()
+document.getElementById('ct').innerHTML = x;
+display_c();
+ }
 
+// document.getElementById("alert").style.display="none";
+// document.getElementById("alert").innerHTML="Distance might not be accurate.";
+// setTimeout(function()
+// { 
+//     document.getElementById("alert").innerHTML="";
+//     document.getElementById("alert").style.display="none";
+// },2000);
+
+function turnOffDist2Div()
+{
+        document.getElementById("dist2").innerHTML="";
+        document.getElementById('exploreAlert').innerHTML="Explore your way!"; 
+        setTimeout(function()
+        { 
+            document.getElementById('exploreAlert').innerHTML="";
+            // modal2.style.display = "block";
+        },2000)
+
+}
+
+function changeToFilled(ele){
+
+    // document.getElementById(ele.innerHTML).className="material-icons-outlined"
+
+}
+// function alertMsg(msg,color){
+//     document.getElementById("alert").style.color="yellow";
+//     document.getElementById("alert").style.display="none";
+//     document.getElementById("alert").innerHTML="Hey";
+//     setTimeout(function()
+//     { 
+//         document.getElementById("alert").innerHTML="";
+//         document.getElementById("alert").style.display="none";
+//     },2000);
+// }
