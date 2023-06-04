@@ -24,30 +24,72 @@
         embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
 
-        <a-camera gps-camera="minDistance: 20;" rotation-reader>
+        <a-camera gps-camera="minDistance: 20;">
         </a-camera>
     </a-scene>
 
     <!-- Trigger/Open The Modal -->
-    <div class="footer">
-
-      <button ><i class="material-icons">home</i></button>
-      <button id="helpBtn"><i class="material-icons">help</i></button>
+    <div class="footer"> 
+      <div id="dist2"></div>
+      <div id="exploreAlert"></div>
+      <div id="helpBtn" class="navBtn"><i class="material-icons" id="search" onclick="changeToFilled(this);" style="font-size: 40px;">help</i></div>
+      <div id="" class="navBtn" onclick="turnOffDist2Div()"><i class="material-icons" id="explore" onclick="changeToFilled(this);" style="font-size: 40px;">explore</i></div>
+      <div id="btn2" class="navBtn"><i id="search" class="material-icons" onclick="changeToFilled(this);" style="font-size: 40px;">search</i></div>
     </div>
+    <div id="alert" style="display: none;">
+
+    </div>
+
+    <!-- Trigger/Open The Modal -->
+    <!-- The Modal -->
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close2 closeIcon" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <h2>Welcome to ExplorAR</h2>
+        </div>
+        <div class="modal-body">
+          <h1 style="color: grey; font-size: 25px; text-align: center;">Where to ?</h1>
+          <div id="options" >
+
+            <!-- -------------------------options will be added according to places array in places.js -->
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="close2" id="close">Just Exploring...</button>
+        </div>
+      </div>
+    </div>
+
 
     <!-- The Modal -->
     <div id="helpModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span class="close" style="font-size: 28px;font-weight: bold;">&times;</span>
-          <h2>NavigatAR Guide</h2>
+          <span class="close closeIcon" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <h2>ExplorAR Guide</h2>
         </div>
-        <div class="modal-body">
-          <h1 style="color: grey; font-size: 25px; text-align: center;">Pan over the campus buildings</h1>
-          <img src="movement.gif" style="display: block; margin-left: auto; margin-right: auto; width: 100px;">
+        <div class="modal-body" style="overflow: scroll; height: 400px;">
+          <h1 style="color: grey; font-size: 25px; text-align: center;"></h1>
+          <p>
+          <span style="color: #3581B8; font-weight: bold;"> ExplorAR will help you reach any IIITD building!</span>
+          <br>
+          Make sure you follow the following steps in order to use ExplorAR:<br>
+          1) Ensure that you have an internet connection.<br>
+          2) Ensure that your GPS is turned on.<br>
+          3) Please allow access to your location when prompted.<br>
+          4) When your camera opens up, you are ready to use ExplorAR! When you hold your phone vertically, you can see pointers for all the buildings, denoting their locations. You can click on the pointer to your desired location which then displays distance between you and your destination.<br>
+          5) You can search for a specific building by clicking on the Search icon (magnifier) and choose which building you want to go to from the menu. Once you choose your destination, ExplorAR tells you the distance(in metres) between you and your destination. Note: Distance shown may not be 100% accurate because of GPS instability.<br>
+
+          <span style="color: grey; font-weight: lighter;">Developed and Designed by: Kyzyl, Aman, Vaibhav & Akshat</span>
+          </p>
+<Insert GIF>
+          <img src="Banners/movement.gif" style="display: block; margin-left: auto; margin-right: auto; width: 100px;">
         </div>
         <div class="modal-footer">
-          <button class="close">Close</button>
+          <button id="onbBtn">Onboard again.</button>
+          <button class="close" id="close">Close</button>
         </div>
       </div>
     </div>
@@ -56,18 +98,85 @@
     <div id="abtPlaceModal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
-          <span class="abtClose" style="font-size: 28px;font-weight: bold;">&times;</span>
-          <h2>Place A</h2>
+          <span class="abtClose closeIcon" id="close" style="font-size: 28px;font-weight: bold;">&times;</span>
+          <h2 id="placeName">Place A</h2>
         </div>
         <div class="modal-body">
             <div id="latLong"></div>
+            <div id="dist"></div>
           
         </div>
         <div class="modal-footer">
-          <button class="abtClose">Close</button>
+          Distance might not be accurate.
+          <button class="abtClose" id="close">Close</button>
         </div>
       </div>
     </div>
+
+
+
+    <!-- onboarding Modal -->
+    <div id="onbModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close3 closeIcon" id="close" style="font-size: 28px; font-weight: bold;">&times;</span>
+          <h2>ExplorAR Guide</h2>
+        </div>
+        <div class="modal-body">
+          
+          <div class="slideshow-container">
+            <div class="mySlides">
+              <!-- <div class="numbertext">1 / 3</div> -->
+              <div class="onb onb1" style="width: 100%; height: 35%; vertical-align: middle; text-align: center;">
+              <p>
+                <span style="color: #3581B8; font-weight: bold;">New to the campus?<br>We will guide you!</span><br>
+                <i class="material-icons" style="font-size: 70px;">explore</i><br>
+                Hold your phone vertically to see pointers to all buildings. Tap on it to know how far it is.<br>
+              </p>
+              </div>
+            </div>
+
+            <div class="mySlides">
+              <!-- <div class="numbertext">2 / 3</div> -->
+              <div class="onb onb2" style="width: 100%; height: 35%; vertical-align: middle; text-align: center;">
+              <p>
+                 <span style="color: #3581B8; font-weight: bold;">Search for a specific location</span><br>
+                <i class="material-icons" style="font-size: 70px;">search</i><br>
+                Choose your destination, we will tell you how far you need to go.
+               </p>
+              </div>
+            </div>
+
+            <div class="mySlides">
+              <!-- <div class="numbertext">3 / 3</div> -->
+              <div class="onb onb4" style="width: 100%; height: 35%; vertical-align: middle; text-align: center;">
+              <p>
+               <span style="color: #3581B8; font-weight: bold;">Just to wrap up...</span><br>
+               <i class="material-icons" style="font-size: 70px;">help</i><br>
+                Works best in portrait mode.<br>Check out <br> whenever you need help!</p> </div>
+            </div>
+
+            <a class="prev" id="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" id="next" onclick="plusSlides(1)">&#10095;</a>
+
+          </div>
+          <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button class="close3" id="close">Skip</button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

@@ -1,6 +1,21 @@
 window.onload = () => {
     alert("finished loading!")
-    setTimeout(function(){ document.getElementById('splash').style.display= "none";},2000)
+    setTimeout(function()
+        { document.getElementById('splash').style.display= "none"; 
+        // modal2.style.display = "block";
+    },2000)
+    
+    document.getElementById("alert").style.backgroundColor="#F4DB05";
+    document.getElementById("alert").style.display="block";
+    document.getElementById("alert").innerHTML="Make sure your GPS is turned on!";
+    setTimeout(function()
+    { 
+        document.getElementById("alert").innerHTML="";
+        document.getElementById("alert").style.display="none";
+        document.getElementById("onbModal").style.display = "block";
+
+    },3000);
+    
     let method = 'dynamic';
 
     // if you want to statically add places, de-comment following line
@@ -11,7 +26,7 @@ window.onload = () => {
         setTimeout(() => {
             let places = staticLoadPlaces();
             renderPlaces(places);
-        }, 3000);
+        }, 1000);
     }
 
     if (method !== 'static') {
@@ -35,6 +50,23 @@ window.onload = () => {
     }
 };
 
+function distance(lat1, lon1, lat2, lon2, unit) {
+        var radlat1 = Math.PI * lat1/180
+        var radlat2 = Math.PI * lat2/180
+        var radlon1 = Math.PI * lon1/180
+        var radlon2 = Math.PI * lon2/180
+        var theta = lon1-lon2
+        var radtheta = Math.PI * theta/180
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+        dist = Math.acos(dist)
+        dist = dist * 180/Math.PI
+        dist = dist * 60 * 1.1515
+        if (unit=="K") { dist = dist * 1.609344 }
+        if (unit=="N") { dist = dist * 0.8684 }
+        return Math.round(dist*100000)/100
+        // return Math.round(dist*100)/100
+}
+
 function staticLoadPlaces() {
     return [
 //         {
@@ -53,39 +85,47 @@ function staticLoadPlaces() {
 //             }
 //         },
         {
-            name: "Library Building",
+            name: "Library Block",
             location: {
                 lat: 28.543991,  // add here latitude if using static data
                 lng: 77.272383, // add here longitude if using static data
             },
-            src: './Banners/1x/Library.png'
+            src: './Banners/1x/Library.png',
+            obj: 'library.obj',
+            mtl: 'library.mtl'
 
         },
         {
-            name: "New Academic Building",
+            name: "Research & Development Block",
             location: {
                 lat: 28.544113,  // add here latitude if using static data
                 lng: 77.271691, // add here longitude if using static data
             },
-            src: './Banners/1x/R&D.png'
+            src: './Banners/1x/R&D.png',
+            obj: 'RnD.obj',
+            mtl: 'RnD.mtl'
 
         },
         {
-            name: "Old Academic Building",
+            name: "Academic Block",
             location: {
                 lat: 28.544591,  // add here latitude if using static data
                 lng: 77.272213, // add here longitude if using static data
             },
-            src: './Banners/1x/OldAcad.png'
+            src: './Banners/1x/OldAcad.png',
+            obj: 'oldacad.obj',
+            mtl: 'oldacad.mtl'
 
         },
         {
-            name: "Students Center",
+            name: "Students Center Block",
             location: {
                 lat: 28.546038, // add here latitude if using static data
                 lng: 77.273007, // add here longitude if using static data
             },
-            src: './Banners/1x/StudentCentre.png'
+            src: './Banners/1x/StudentCentre.png',
+            obj: 'studentcenter.obj',
+            mtl: 'studentcenter.mtl'
 
         },
         {
@@ -94,7 +134,9 @@ function staticLoadPlaces() {
                 lat: 28.545361,  // add here latitude if using static data
                 lng: 77.272877, // add here longitude if using static data
             },
-            src: './Banners/1x/LectureHC.png'
+            src: './Banners/1x/LectureHC.png',
+            obj: 'lhc.obj',
+            mtl: 'lhc.mtl'
 
         },
         {
@@ -103,16 +145,31 @@ function staticLoadPlaces() {
                 lat: 28.547387,  // add here latitude if using static data
                 lng: 77.273946, // add here longitude if using static data
             },
-            src: './Banners/1x/oldBoysHostel.png'
+            src: './Banners/1x/oldBoysHostel.png',
+            obj: 'oldboyshostel.obj',
+            mtl: 'oldboyshostel.mtl'
 
         },
         {
-            name: "New Boys Hostel",
+            name: "New Boys Hostel H1",
             location: {
                 lat: 28.547902,  // add here latitude if using static data
                 lng: 77.274062, // add here longitude if using static data
             },
-            src: './Banners/1x/NewBoysHostel.png'
+            src: './Banners/1x/NewBoysHostel.png',
+            obj: 'newhostelh1.obj',
+            mtl: 'newhostelh1.mtl'
+
+        },
+        {
+            name: "New Boys Hostel H2",
+            location: {
+                lat: 28.547902,  // add here latitude if using static data
+                lng: 77.274062, // add here longitude if using static data
+            },
+            src: './Banners/1x/NewBoysHostel.png',
+            obj: 'newhostelh2.obj',
+            mtl: 'newhostelh2.mtl'
 
         },
         {
@@ -121,7 +178,9 @@ function staticLoadPlaces() {
                 lat: 28.546988,  // add here latitude if using static data
                 lng: 77.273763, // add here longitude if using static data
             },
-            src: './Banners/1x/GirlsHostel.png'
+            src: './Banners/1x/GirlsHostel.png',
+            obj: 'girlshostel.obj',
+            mtl: 'girlshostel.mtl'
         },
         {
             name: "Sports Complex",
@@ -129,14 +188,17 @@ function staticLoadPlaces() {
                 lat: 28.547073,   // add here latitude if using static data
                 lng: 77.272436 // add here longitude if using static data
             },
-            src: './Banners/1x/SportsBlock.png'
+            src: './Banners/1x/SportsBlock.png',
+            obj: 'sportscomplex.obj',
+            mtl: 'sportscomplex.mtl'
         }
 
 // Old Boys Hostel  28.547387, 77.273946
 // New Boys Hostel  28.547902, 77.274062
 // Girls Hostel 28.546988, 77.273763
     ];
-}
+};
+
 
 // getting places from REST APIs
 // function dynamicLoadPlaces(position) {
@@ -185,6 +247,7 @@ abtSpan.onclick = function() {
 
 abtCloseButton.onclick = function() {
   abtPlaceModal.style.display = "none";
+  document.getElementById("modal2").style.display="none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -195,31 +258,30 @@ window.onclick = function(event) {
 }
 
 // -------------------------------------------- printing geoloction
-var options = {
-  enableHighAccuracy: true,
-  maximumAge: 20000
-};
+// var options = {
+//   enableHighAccuracy: true,
+//   maximumAge: 20000
+// };
 
-function success(pos) {
-  var crd = pos.coords;
+// function success(pos) {
+//   var crd = pos.coords;
 
-  alert("kcdjaoj")
-  console.log('Your current position is:');
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude: ${crd.longitude}`);
-  console.log(`More or less ${crd.accuracy} meters.`);
-}
+//   alert("kcdjaoj")
+//   console.log('Your current position is:');
+//   console.log(`Latitude : ${crd.latitude}`);
+//   console.log(`Longitude: ${crd.longitude}`);
+//   console.log(`More or less ${crd.accuracy} meters.`);
+// }
 
-function handle_error(err) {
-  if (err.code == 1) {
-    // user said no!
-  }
-}
+// function handle_error(err) {
+//   if (err.code == 1) {
+//     // user said no!
+//   }
+// }
 // --------------------------------------------
 function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
-    var path='./Banners/1x'
-    var markers=['./Banners/1x/Library.png', './Banners/1x/Library.png']
+    let options = document.querySelector('#options');
 
     places.forEach((place) => {
         const latitude = place.location.lat;
@@ -230,20 +292,20 @@ function renderPlaces(places) {
         // var current_lat=current.coords.latitude
         // var current_lon=current.coords.longitude
 
-        navigator.geolocation.getCurrentPosition(showPosition);
-        function showPosition(position){
-            document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
-            alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
-        };
-
         // add place icon
-        const icon = document.createElement('a-image');
+        // const icon = document.createElement('a-image');
+        const icon = document.createElement('a-entity');
+        // icon.setAttribute('rotation',"0 0 0");
+        var ap="obj: url(./3d/".concat(place.obj).concat("); mtl: url(./3d/").concat(place.mtl).concat(")");
+        // alert(ap);
+        icon.setAttribute('obj-model',ap);
         icon.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude}`);
         icon.setAttribute('name', place.name);
-        icon.setAttribute('src', place.src);
+        // icon.setAttribute('src', place.src);
 
         // for debug purposes, just show in a bigger scale, otherwise I have to personally go on places...
-        icon.setAttribute('scale', '20, 20');
+        icon.setAttribute('scale', '5, 5');
+        // icon.setAttribute('scale', '5, 5');
 
         icon.addEventListener('loaded', () => window.dispatchEvent(new CustomEvent('gps-entity-place-loaded')));
 
@@ -271,10 +333,86 @@ function renderPlaces(places) {
 
         icon.addEventListener('click', function(){
             alert("you clicked" + place.name);
+            document.getElementById("placeName").innerHTML=place.name;
+            var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
+            function showPosition(position){
+                document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+                document.getElementById("dist").innerHTML = "Distance: " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ;
+                document.getElementById("dist2").innerHTML = place.name + " is " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ; 
+                // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
+            };
             abtPlaceModal.style.display = "block";
         });
 
         scene.appendChild(icon);
+
+        const option = document.createElement('div');
+        option.setAttribute('id', 'option')
+        option.innerHTML= place.name;
+
+        option.addEventListener('click', function(){
+            alert("you clicked" + place.name);
+            document.getElementById("placeName").innerHTML=place.name;
+            var inst = setInterval(navigator.geolocation.getCurrentPosition(showPosition), 5000); //update lat long every 5 sec
+            function showPosition(position){
+
+                document.getElementById("latLong").innerHTML = "Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude;
+                document.getElementById("dist").innerHTML = "Distance: " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ;
+                document.getElementById("dist2").innerHTML = place.name + " is " + distance(position.coords.latitude, position.coords.longitude, place.location.lat, place.location.lng) + "m away from you." ; 
+                // alert("Latitude: " + position.coords.latitude +"<br>Longitude: " + position.coords.longitude)
+            };
+            abtPlaceModal.style.display = "block";
+            
+        });
+
+        options.appendChild(option);
+
+        
     });
 }
+function display_c(){
+var refresh=1000; // Refresh rate in milli seconds
+mytime=setTimeout('display_ct()',refresh)
+}
 
+function display_ct() {
+var x = new Date()
+document.getElementById('ct').innerHTML = x;
+display_c();
+ }
+
+// document.getElementById("alert").style.display="none";
+// document.getElementById("alert").innerHTML="Distance might not be accurate.";
+// setTimeout(function()
+// { 
+//     document.getElementById("alert").innerHTML="";
+//     document.getElementById("alert").style.display="none";
+// },2000);
+
+function turnOffDist2Div()
+{
+        document.getElementById("dist2").innerHTML="";
+        document.getElementById('exploreAlert').innerHTML="Explore your way!"; 
+        setTimeout(function()
+        { 
+            document.getElementById('exploreAlert').innerHTML="";
+            // modal2.style.display = "block";
+        },2000)
+
+}
+
+function changeToFilled(ele){
+
+    // document.getElementById(ele.innerHTML).className="material-icons-outlined"
+
+}
+// function alertMsg(msg,color){
+//     document.getElementById("alert").style.color="yellow";
+//     document.getElementById("alert").style.display="none";
+//     document.getElementById("alert").innerHTML="Hey";
+//     setTimeout(function()
+//     { 
+//         document.getElementById("alert").innerHTML="";
+//         document.getElementById("alert").style.display="none";
+//     },2000);
+// }
