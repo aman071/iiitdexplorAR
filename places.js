@@ -69,133 +69,135 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 
 function staticLoadPlaces() {
     return [
-//         {
-//             name: "OAT",
-//             location: {
-//                 lat: 28.5441564, // add here latitude if using static data
-//                 lng: 77.2722511, // add here longitude if using static data
-//             },
-//             src: 'map-marker.png'
-//         },
-//         {
-//             name: 'Another place name',
-//             location: {
-//                 lat: 28.544474,
-//                 lng: 77.271769,
-//             }
-//         },
-        {
-            name: "Library Block",
-            location: {
-                lat: 28.543991,  // add here latitude if using static data
-                lng: 77.272383, // add here longitude if using static data
-            },
-            src: './Banners/1x/Library.png',
-            obj: 'library.obj',
-            mtl: 'library.mtl'
+        // {
+        //     name: "Library Block",
+        //     location: {
+        //         lat: 28.543991,  // add here latitude if using static data
+        //         lng: 77.272383, // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/Library.png',
+        //     obj: 'library.obj',
+        //     mtl: 'library.mtl'
 
-        },
-        {
-            name: "Research & Development Block",
-            location: {
-                lat: 28.544113,  // add here latitude if using static data
-                lng: 77.271691, // add here longitude if using static data
-            },
-            src: './Banners/1x/R&D.png',
-            obj: 'RnD.obj',
-            mtl: 'RnD.mtl'
+        // },
+        // {
+        //     name: "Research & Development Block",
+        //     location: {
+        //         lat: 28.544113,  // add here latitude if using static data
+        //         lng: 77.271691, // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/R&D.png',
+        //     obj: 'RnD.obj',
+        //     mtl: 'RnD.mtl'
 
-        },
-        {
-            name: "Academic Block",
-            location: {
-                lat: 28.544591,  // add here latitude if using static data
-                lng: 77.272213, // add here longitude if using static data
-            },
-            src: './Banners/1x/OldAcad.png',
-            obj: 'oldacad.obj',
-            mtl: 'oldacad.mtl'
+        // },
+        // {
+        //     name: "Academic Block",
+        //     location: {
+        //         lat: 28.544591,  // add here latitude if using static data
+        //         lng: 77.272213, // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/OldAcad.png',
+        //     obj: 'oldacad.obj',
+        //     mtl: 'oldacad.mtl'
 
-        },
-        {
-            name: "Students Center Block",
-            location: {
-                lat: 28.546038, // add here latitude if using static data
-                lng: 77.273007, // add here longitude if using static data
-            },
-            src: './Banners/1x/StudentCentre.png',
-            obj: 'studentcenter.obj',
-            mtl: 'studentcenter.mtl'
+        // },
+        // {
+        //     name: "Students Center Block",
+        //     location: {
+        //         lat: 28.546038, // add here latitude if using static data
+        //         lng: 77.273007, // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/StudentCentre.png',
+        //     obj: 'studentcenter.obj',
+        //     mtl: 'studentcenter.mtl'
 
-        },
-        {
-            name: "Lecture Hall Complex",
-            location: {
-                lat: 28.545361,  // add here latitude if using static data
-                lng: 77.272877, // add here longitude if using static data
-            },
-            src: './Banners/1x/LectureHC.png',
-            obj: 'lhc.obj',
-            mtl: 'lhc.mtl'
+        // },
+        // {
+        //     name: "Lecture Hall Complex",
+        //     location: {
+        //         lat: 28.545361,  // add here latitude if using static data
+        //         lng: 77.272877, // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/LectureHC.png',
+        //     obj: 'lhc.obj',
+        //     mtl: 'lhc.mtl'
 
-        },
-        {
-            name: "Old Boys Hostel",
-            location: {
-                lat: 28.547387,  // add here latitude if using static data
-                lng: 77.273946, // add here longitude if using static data
-            },
-            src: './Banners/1x/oldBoysHostel.png',
-            obj: 'oldboyshostel.obj',
-            mtl: 'oldboyshostel.mtl'
+        // },
+        // {
+        //     name: "Old Boys Hostel",
+        //     location: {
+        //         lat: 28.547387,  // add here latitude if using static data
+        //         lng: 77.273946, // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/oldBoysHostel.png',
+        //     obj: 'oldboyshostel.obj',
+        //     mtl: 'oldboyshostel.mtl'
 
-        },
-        {
-            name: "New Boys Hostel H1",
-            location: {
-                lat: 28.547902,  // add here latitude if using static data
-                lng: 77.274062, // add here longitude if using static data
-            },
-            src: './Banners/1x/NewBoysHostel.png',
-            obj: 'newhostelh1.obj',
-            mtl: 'newhostelh1.mtl'
+        // },
+        // {
+        //     name: "New Boys Hostel H1",
+        //     location: {
+        //         lat: 28.547902,  // add here latitude if using static data
+        //         lng: 77.274062, // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/NewBoysHostel.png',
+        //     obj: 'newhostelh1.obj',
+        //     mtl: 'newhostelh1.mtl'
 
-        },
-        {
-            name: "New Boys Hostel H2",
-            location: {
-                lat: 28.547902,  // add here latitude if using static data
-                lng: 77.274062, // add here longitude if using static data
-            },
-            src: './Banners/1x/NewBoysHostel.png',
-            obj: 'newhostelh2.obj',
-            mtl: 'newhostelh2.mtl'
+        // },
+        // {
+        //     name: "New Boys Hostel H2",
+        //     location: {
+        //         lat: 28.547902,  // add here latitude if using static data
+        //         lng: 77.274062, // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/NewBoysHostel.png',
+        //     obj: 'newhostelh2.obj',
+        //     mtl: 'newhostelh2.mtl'
 
-        },
+        // },
+        // {
+        //     name: "Girls Hostel",
+        //     location: {
+        //         lat: 28.546988,  // add here latitude if using static data
+        //         lng: 77.273763, // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/GirlsHostel.png',
+        //     obj: 'girlshostel.obj',
+        //     mtl: 'girlshostel.mtl'
+        // },
+        // {
+        //     name: "Sports Complex",
+        //     location: {
+        //         lat: 28.547073,   // add here latitude if using static data
+        //         lng: 77.272436 // add here longitude if using static data
+        //     },
+        //     src: './Banners/1x/SportsBlock.png',
+        //     obj: 'sportscomplex.obj',
+        //     mtl: 'sportscomplex.mtl'
+        // }
+        
         {
-            name: "Girls Hostel",
-            location: {
-                lat: 28.546988,  // add here latitude if using static data
-                lng: 77.273763, // add here longitude if using static data
-            },
-            src: './Banners/1x/GirlsHostel.png',
-            obj: 'girlshostel.obj',
-            mtl: 'girlshostel.mtl'
-        },
-        {
-            name: "Sports Complex",
-            location: {
-                lat: 28.547073,   // add here latitude if using static data
-                lng: 77.272436 // add here longitude if using static data
+            name: "Civil",
+            location: { 
+                lat: 28.749096589837436,   // add here latitude if using static data
+                lng: 77.11796210970621 // add here longitude if using static data
             },
             src: './Banners/1x/SportsBlock.png',
             obj: 'sportscomplex.obj',
             mtl: 'sportscomplex.mtl'
-        }
-
-// Old Boys Hostel  28.547387, 77.273946
-// New Boys Hostel  28.547902, 77.274062
-// Girls Hostel 28.546988, 77.273763
+        },
+        {
+            name: "Library",
+            location: {
+                lat: 28.750792711898587,   // add here latitude if using static data
+                lng: 77.11659479806312 // add here longitude if using static data
+            },
+            src: './Banners/1x/Library.png',
+            obj: 'library.obj',
+            mtl: 'library.mtl'        }
+    
     ];
 };
 
