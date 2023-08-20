@@ -177,7 +177,16 @@ function staticLoadPlaces() {
         //     obj: 'sportscomplex.obj',
         //     mtl: 'sportscomplex.mtl'
         // }
-        
+        {
+            name: "DTU Entrance",
+            location: { 
+                lat: 28.74535,   // add here latitude if using static data
+                lng: 77.1164123 // add here longitude if using static data
+            },
+            src: './Banners/1x/SportsBlock.png',
+            obj: 'sportscomplex.obj',
+            mtl: 'sportscomplex.mtl'
+        },
         {
             name: "Civil",
             location: { 
